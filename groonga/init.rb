@@ -1,15 +1,5 @@
 require_relative '../config/environment'
 
-require 'fileutils'
-require 'groonga'
-
-database_path = ENV['GROONGA_DATABASE_PATH'] || 'groonga/database'
-if File.exist?(database_path)
-  Groonga::Database.open(database_path)
-else
-  Groonga::Database.create(path: database_path)
-end
-
 Groonga::Schema.define do |schema|
   schema.create_table('Posts',
                       type: :hash,
@@ -21,11 +11,10 @@ Groonga::Schema.define do |schema|
   end
 end
 
+indexer = PostIndexer.new
 posts = Groonga['Posts']
 Post.all.each do |post|
-  attributes = post.attributes
-  id = attributes.delete("id")
-  posts.add(id, attributes)
+  indexer.add(post)
 end
 
 Groonga::Schema.define do |schema|
