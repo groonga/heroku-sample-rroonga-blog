@@ -1,3 +1,5 @@
+p ENV['GROONGA_DATABASE_PATH']
+
 require_relative '../config/environment'
 
 Groonga::Schema.define do |schema|
