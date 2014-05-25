@@ -41,3 +41,6 @@ namespace :import do
   desc 'Import Ruby news'
   task ruby: ['import:ruby:en', 'import:ruby:ja']
 end
+
+desc 'Import entries'
+task import: ['import:blogroonga', 'import:ruby']
