@@ -19,6 +19,10 @@ class PostSearcher
     Post.where(id: post_ids)
   end
 
+  def highlighter
+    @highlighter ||= Highlighter.new(words)
+  end
+
   private
   def words
     @query.split(/\s+/)

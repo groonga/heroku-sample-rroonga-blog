@@ -8,8 +8,10 @@ class PostsController < ApplicationController
     if @search_condition.valid?
       searcher = PostSearcher.new(@search_condition.query)
       @posts = searcher.search
+      @highlighter = searcher.highlighter
     else
       @posts = Post.all
+      @highlighter = nil
     end
   end
 
