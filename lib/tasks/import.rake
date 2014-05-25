@@ -1,6 +1,3 @@
-require 'rss'
-require 'mechanize'
-
 def import_rss(url)
   uri = URI(ENV['APP_URL'])
   uri.path = '/posts/new'
@@ -18,6 +15,9 @@ end
 
 namespace :import do
   task prepare: :environment do
+    require 'rss'
+    require 'mechanize'
+
     if ENV['APP_URL'].nil?
       message = <<-MESSAGE
 Must set APP_URL environment variable
