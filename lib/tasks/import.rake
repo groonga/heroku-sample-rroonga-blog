@@ -1,5 +1,5 @@
 def import_rss(url)
-  uri = URI(ENV['APP_URL'])
+  uri = URI(ENV['web_url'])
   uri.path = '/posts/new'
   agent = Mechanize.new
 
@@ -18,10 +18,11 @@ namespace :import do
     require 'rss'
     require 'mechanize'
 
-    if ENV['APP_URL'].nil?
+    if ENV['web_url'].nil?
       message = <<-MESSAGE
-Must set APP_URL environment variable
-e.g.: rake import APP_URL=http://localhost:3000
+Must set web_url environment variable
+e.g.: rake import web_url=http://localhost:3000
+e.g.: rake import $(heroku apps:info --shell | grep '^web_url=')
       MESSAGE
       raise message
     end
