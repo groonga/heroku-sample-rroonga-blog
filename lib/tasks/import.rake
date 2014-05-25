@@ -1,15 +1,31 @@
 require 'rss'
+require 'mechanize'
 
 def import_rss(url)
+  uri = URI(ENV['APP_URL'])
+  uri.path = '/posts/new'
+  agent = Mechanize.new
+
   rss = RSS::Parser.parse(url)
   rss.items.each do |item|
-    Post.create(title:   item.title,
-                content: item.description)
+    new_post_page = agent.get(uri.to_s)
+    form = new_post_page.forms.first
+    form['post[title]']   = item.title
+    form['post[content]'] = item.description
+    form.submit
   end
 end
 
 namespace :import do
-  task prepare: :environment
+  task prepare: :environment do
+    if ENV['APP_URL'].nil?
+      message = <<-MESSAGE
+Must set APP_URL environment variable
+e.g.: rake import APP_URL=http://localhost:3000
+      MESSAGE
+      raise message
+    end
+  end
 
   namespace :blogroonga do
     desc 'Import blogroonga entries in English'

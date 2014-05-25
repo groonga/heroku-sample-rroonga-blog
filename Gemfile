@@ -42,3 +42,5 @@ gem 'spring',        group: :development
 gem 'rails_12factor', group: :production
 
 gem 'rroonga'
+
+gem 'mechanize', group: :development
