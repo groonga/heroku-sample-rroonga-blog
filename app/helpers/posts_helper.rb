@@ -1,7 +1,7 @@
 module PostsHelper
   def highlight(text)
     if @highlighter
-      raw(@highlighter.highlight(text))
+      @highlighter.highlight(text)
     else
       text
     end

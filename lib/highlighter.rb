@@ -14,8 +14,9 @@ class Highlighter
     options = {
       other_text_handler: other_text_handler,
     }
-    @patricia_trie.tag_keys(text, options) do |record, word|
+    highlighted_text = @patricia_trie.tag_keys(text, options) do |record, word|
       "<span class=\"keyword\">#{ERB::Util.html_escape(word)}</span>"
     end
+    highlighted_text.html_safe
   end
 end
