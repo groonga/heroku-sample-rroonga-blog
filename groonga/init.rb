@@ -1,6 +1,3 @@
-require 'pp'
-pp ENV
-
 require_relative '../config/environment'
 
 Groonga::Schema.define do |schema|
