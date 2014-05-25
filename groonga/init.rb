@@ -11,10 +11,11 @@ Groonga::Schema.define do |schema|
   end
 end
 
-indexer = PostIndexer.new
-posts = Groonga['Posts']
-Post.all.each do |post|
-  indexer.add(post)
+if Post.table_exists?
+  indexer = PostIndexer.new
+  Post.all.each do |post|
+    indexer.add(post)
+  end
 end
 
 Groonga::Schema.define do |schema|
