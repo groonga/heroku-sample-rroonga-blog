@@ -24,7 +24,7 @@ namespace :import do
   end
 
   desc 'Import blogroonga entries'
-  task :blogroonga => ['import:blogroonga:en', 'import:blogroonga:ja']
+  task blogroonga: ['import:blogroonga:en', 'import:blogroonga:ja']
 
   namespace :ruby do
     desc 'Import Ruby news in English'
@@ -39,5 +39,5 @@ namespace :import do
   end
 
   desc 'Import Ruby news'
-  task :ruby => ['import:ruby:en', 'import:ruby:ja']
+  task ruby: ['import:ruby:en', 'import:ruby:ja']
 end
