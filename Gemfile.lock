@@ -27,6 +27,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    archive-zip (0.6.0)
+      io-like (>= 0.3.0)
     arel (5.0.1.20140414130214)
     builder (3.2.2)
     coffee-rails (4.0.1)
@@ -38,8 +40,15 @@ GEM
     coffee-script-source (1.7.0)
     erubis (2.7.0)
     execjs (2.0.2)
+    gqtp (1.0.6)
+    groonga-client (0.0.8)
+      gqtp (>= 1.0.4)
+      groonga-command (>= 1.0.4)
+    groonga-command (1.0.7)
+      json
     hike (1.2.3)
     i18n (0.6.9)
+    io-like (0.3.0)
     jbuilder (2.0.7)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -54,6 +63,7 @@ GEM
     minitest (5.3.4)
     multi_json (1.10.1)
     pg (0.17.1)
+    pkg-config (1.1.5)
     polyglot (0.3.4)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -81,6 +91,11 @@ GEM
     rake (10.3.2)
     rdoc (4.1.1)
       json (~> 1.4)
+    rroonga (4.0.1)
+      archive-zip
+      groonga-client (>= 0.0.3)
+      json
+      pkg-config
     sass (3.2.19)
     sass-rails (4.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -124,6 +139,7 @@ DEPENDENCIES
   pg
   rails (= 4.1.1)
   rails_12factor
+  rroonga
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   spring
