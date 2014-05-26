@@ -1,14 +1,15 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+  <p class="alert alert-success">
+    <%= notice %>
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  </p>
+<% end %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+<div>
+  <h4><%= @post.title %></h4>
+  <pre><%= @post.content %></pre>
+</div>
 
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<%= link_to 'Edit Post', edit_post_path(@post), class: 'btn btn-default' %>
+<%= link_to 'Back', posts_path, class: 'btn' %>
+<%= link_to 'Destroy Post', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger pull-right' %>
