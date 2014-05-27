@@ -6,7 +6,7 @@ def import_rss(url)
   rss = RSS::Parser.parse(url)
   rss.items.each do |item|
     new_post_page = agent.get(uri.to_s)
-    form = new_post_page.forms.first
+    form = new_post_page.forms.last
     form['post[title]']   = item.title
     form['post[content]'] = item.description
     form.submit
