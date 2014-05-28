@@ -34,7 +34,6 @@ posts Ruby news in Japanese:
 
 CC0 1.0 Universal (Public Domain)
 
-## Help us
+## Thanks
 
-  * Design me.
-  * ...
+  * mallowlabs: Web design.
