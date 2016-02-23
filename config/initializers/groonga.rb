@@ -1,7 +1,7 @@
 require 'fileutils'
 require 'groonga'
 
-database_path = ENV['GROONGA_DATABASE_PATH'] || 'groonga/database'
+database_path = ENV['GROONGA_DATABASE_PATH'] || 'groonga/data/db'
 if File.exist?(database_path)
   Groonga::Database.open(database_path)
 else
