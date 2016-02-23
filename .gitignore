@@ -16,4 +16,4 @@
 /tmp
 
 # Ignore Groonga database.
-/groonga/database*
+/groonga/data/
