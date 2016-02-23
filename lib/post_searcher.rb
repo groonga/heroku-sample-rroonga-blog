@@ -7,7 +7,10 @@ class PostSearcher
   def search
     matched_posts = @posts.select do |record|
       match_target = record.match_target do |match_record|
-        (match_record.title * 5) | (match_record.content)
+        (match_record.index('Words.Posts_title') * 10) |
+          (match_record.index('Terms.Posts_title') * 8) |
+          (match_record.index('Words.Posts_content') * 3) |
+          (match_record.index('Terms.Posts_content'))
       end
       words.collect do |word|
         match_target =~ word

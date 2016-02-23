@@ -28,6 +28,15 @@ Groonga::Schema.define do |schema|
     table.index('Posts.content')
   end
 
+  schema.create_table('Words',
+                      type: :patricia_trie,
+                      key_type: :short_text,
+                      normalizer: 'NormalizerAuto',
+                      default_tokenizer: 'TokenMecab') do |table|
+    table.index('Posts.title')
+    table.index('Posts.content')
+  end
+
   schema.create_table('Times',
                       type: :patricia_trie,
                       key_type: :time) do |table|
