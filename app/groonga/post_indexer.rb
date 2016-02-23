@@ -4,12 +4,14 @@ class PostIndexer
   end
 
   def add(post)
+    return if @posts.nil?
     attributes = post.attributes
     id = attributes.delete('id')
     @posts.add(id, attributes)
   end
 
   def remove(post)
+    return if @posts.nil?
     @posts[post.id].delete
   end
 end
